@@ -11,6 +11,8 @@
 		<RepositoryType>git</RepositoryType>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<Description>Mapito is a C# library designed to facilitate simple type-to-type mapping in your projects. It provides an easy-to-use interface and DI (Dependency Injection) integration for mapping objects from one type to another.</Description>
+		<PackageTags>mapper;mappers;automapper;mapping;mapster</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
