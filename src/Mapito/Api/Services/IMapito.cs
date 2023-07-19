@@ -3,7 +3,7 @@
 /// <summary>
 /// A mapping service for mapping types.
 /// </summary>
-public interface IMapitoService
+public interface IMapito
 {
     /// <summary>
     /// Maps entity of type <typeparamref name="TSource"/> to type <typeparamref name="TDest"/>.

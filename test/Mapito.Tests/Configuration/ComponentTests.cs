@@ -38,19 +38,19 @@ public class ComponentTests
     }
 
     [Fact]
-    public void Component_Set_MapitoService()
+    public void Component_Set_Mapito()
     {
         var fixture = new ComponentTestFixture();
 
         // Add component
         fixture.Services.AddMapito(mapito =>
         {
-            mapito.SetMapitoService<MockMapitoService>();
+            mapito.SetMapito<MockMapito>();
         });
 
         var serviceProvider = fixture.Services.BuildServiceProvider();
 
-        Assert.IsType<MockMapitoService>(serviceProvider.GetService<IMapitoService>());
+        Assert.IsType<MockMapito>(serviceProvider.GetService<IMapito>());
     }
 
     [Fact]

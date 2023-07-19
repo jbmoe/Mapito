@@ -2,7 +2,7 @@
 
 namespace Mapito.Tests.Mock.Services;
 
-public class MockMapitoService : IMapitoService
+public class MockMapito : IMapito
 {
     public Task<TDest> Map<TSource, TDest>(TSource source)
     {
