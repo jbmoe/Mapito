@@ -61,21 +61,21 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-5. Inject the `IMapitoService` into your classes where you need to perform the mapping:
+5. Inject the `IMapito` into your classes where you need to perform the mapping:
 
 ```csharp
 public class MyClass
 {
-    private readonly IMapitoService _mapitoService;
+    private readonly IMapito _mapito;
 
-    public MyClass(IMapitoService mapitoService)
+    public MyClass(IMapito mapito)
     {
-        _mapitoService = mapitoService;
+        _mapito = mapito;
     }
 
     public async Task<MyDto> PerformMapping(MyModel source)
     {
-        MyDto result = await _mapitoService.Map<MyModel, MyDto>(source);
+        MyDto result = await _mapito.Map<MyModel, MyDto>(source);
         return result;
     }
 }
@@ -85,7 +85,7 @@ public class MyClass
 
 ## API Documentation
 
-### IMapitoService
+### IMapito
 
 #### `Task<TDest> Map<TSource, TDest>(TSource source);`
 
@@ -116,3 +116,7 @@ Mapito is released under the [MIT License](LICENSE).
 ---
 
 Thank you for choosing Mapito for your type-to-type mapping needs! If you have any questions or need further assistance, feel free to reach out. Happy coding!
+
+## Note on Alpha Version
+
+Please be aware that Mapito is currently in the alpha stage, which means it's still undergoing early testing and development. As a result, changes may occur in subsequent releases as I refine and improve the library based on user feedback and requirements.
