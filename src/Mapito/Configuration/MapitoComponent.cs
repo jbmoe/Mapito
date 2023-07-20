@@ -11,18 +11,18 @@ public class MapitoComponent : IMapitoComponent
 
     internal enum ServicesEnum
     {
-        MappingService,
+        Mapito,
     }
 
     internal readonly Dictionary<ServicesEnum, ServiceDescriptor> Services = new()
     {
-        [ServicesEnum.MappingService] = ServiceDescriptor.Transient<IMapitoService, Domain.Services.MapitoService>(),
+        [ServicesEnum.Mapito] = ServiceDescriptor.Transient<IMapito, Domain.Services.Mapito>(),
     };
 
-    public IMapitoComponent SetMapitoService<T>()
-        where T : IMapitoService
+    public IMapitoComponent SetMapito<T>()
+        where T : IMapito
     {
-        Services[ServicesEnum.MappingService] = ServiceDescriptor.Describe(typeof(IMapitoService), typeof(T), ServiceLifetime.Transient);
+        Services[ServicesEnum.Mapito] = ServiceDescriptor.Describe(typeof(IMapito), typeof(T), ServiceLifetime.Transient);
         return this;
     }
 

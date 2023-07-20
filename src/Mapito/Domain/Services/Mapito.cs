@@ -4,11 +4,11 @@ using Mapito.Api.Services;
 
 namespace Mapito.Domain.Services;
 
-public class MapitoService : IMapitoService
+public class Mapito : IMapito
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public MapitoService(IServiceProvider serviceProvider)
+    public Mapito(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
     }

@@ -9,13 +9,13 @@ using Xunit;
 
 namespace Mapito.Tests.Domain.Services;
 
-public class MapitoServiceTests
+public class MapitoTests
 {
-    public class MapitoServiceTestFixture : Fixture
+    public class MapitoTestFixture : Fixture
     {
-        public IMapitoService MapitoService { get; set; }
+        public IMapito Mapito { get; set; }
 
-        public MapitoServiceTestFixture()
+        public MapitoTestFixture()
         {
             var services = new ServiceCollection();
             services.AddMapito(mapito =>
@@ -25,24 +25,24 @@ public class MapitoServiceTests
 
             var serviceProvider = services.BuildServiceProvider();
 
-            MapitoService = serviceProvider.GetRequiredService<IMapitoService>();
+            Mapito = serviceProvider.GetRequiredService<IMapito>();
         }
     }
 
     [Fact]
     public void Mapper_Map_Not_Found()
     {
-        var fixture = new MapitoServiceTestFixture();
+        var fixture = new MapitoTestFixture();
 
         var source = new NullModel();
 
-        Assert.ThrowsAsync<MapperNotFoundException>(() => fixture.MapitoService.Map<NullModel, MockPerson>(source));
+        Assert.ThrowsAsync<MapperNotFoundException>(() => fixture.Mapito.Map<NullModel, MockPerson>(source));
     }
 
     [Fact]
     public void Mapper_MapEnumerable_Not_Found()
     {
-        var fixture = new MapitoServiceTestFixture();
+        var fixture = new MapitoTestFixture();
 
         var source = new List<NullModel>
         {
@@ -51,17 +51,17 @@ public class MapitoServiceTests
             new NullModel(),
         };
 
-        Assert.ThrowsAsync<MapperNotFoundException>(() => fixture.MapitoService.Map<NullModel, MockPerson>(source));
+        Assert.ThrowsAsync<MapperNotFoundException>(() => fixture.Mapito.Map<NullModel, MockPerson>(source));
     }
 
     [Fact]
     public async void Mapper_Map_Found()
     {
-        var fixture = new MapitoServiceTestFixture();
+        var fixture = new MapitoTestFixture();
 
         var source = new MockPerson("Chris P.", "Bacon");
 
-        var destination = await fixture.MapitoService.Map<MockPerson, MockPersonDto>(source);
+        MockPersonDto destination = await fixture.Mapito.Map<MockPerson, MockPersonDto>(source);
 
         Assert.NotNull(destination);
         Assert.IsType<MockPersonDto>(destination);
@@ -71,7 +71,7 @@ public class MapitoServiceTests
     [Fact]
     public async void Mapper_MapEnumerable_Found()
     {
-        var fixture = new MapitoServiceTestFixture();
+        var fixture = new MapitoTestFixture();
 
         var source = new List<MockPerson>
         {
@@ -80,7 +80,7 @@ public class MapitoServiceTests
             new("Hugh", "Mungus"),
         };
 
-        var destination = await fixture.MapitoService.Map<MockPerson, MockPersonDto>(source);
+        var destination = await fixture.Mapito.Map<MockPerson, MockPersonDto>(source);
 
         Assert.NotNull(destination);
         Assert.Equal(3, destination.Count);
