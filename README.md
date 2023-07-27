@@ -12,20 +12,25 @@ Mapito is a C# library designed to facilitate simple type-to-type mapping in you
 
 ## Installation
 
-You can install Mapito via NuGet Package Manager or by using the .NET CLI.
-
-#### Package Manager Console
-
-```
-Install-Package Mapito
-```
+You can install Mapito via by using the .NET CLI, NuGet Package Manager or PackageReference.
 
 #### .NET CLI
 
 ```
-dotnet add package Mapito
+> dotnet add package Mapito --version 1.2.0-alpha
 ```
 
+#### Package Manager Console
+
+```
+PM> NuGet\Install-Package Mapito -Version 1.2.0-alpha
+```
+
+#### PackageReference
+
+```
+<PackageReference Include="Mapito" Version="1.1.0-alpha" />
+```
 ## Getting Started
 
 1. First, install the Mapito library in your project using the installation steps mentioned above.

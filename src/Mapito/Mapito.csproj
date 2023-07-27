@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
-		<Version>1.1.0-alpha</Version>
+		<Version>1.2.0-alpha</Version>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<Title>Mapito</Title>
@@ -10,6 +10,7 @@
 		<RepositoryUrl>https://github.com/jbmoe/Mapito</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<IncludeSymbols>true</IncludeSymbols>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<Description>Mapito is a C# library designed to facilitate simple type-to-type mapping in your projects. It provides an easy-to-use interface and DI (Dependency Injection) integration for mapping objects from one type to another.</Description>
 		<PackageTags>mapper;mappers;automapper;mapping;mapster</PackageTags>
@@ -28,6 +29,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
 	</ItemGroup>
 
 </Project>

@@ -62,10 +62,12 @@ public class ComponentTests
         fixture.Services.AddMapito(mapito =>
         {
             mapito.SetMapper<MockPerson, MockPersonDto, MockPersonMapper>();
+            mapito.SetMapper<MockPersonDto, MockPerson, MockPersonDtoMapper>();
         });
 
         var serviceProvider = fixture.Services.BuildServiceProvider();
 
         Assert.IsType<MockPersonMapper>(serviceProvider.GetService<IMapper<MockPerson, MockPersonDto>>());
+        Assert.IsType<MockPersonDtoMapper>(serviceProvider.GetService<IMapper<MockPersonDto, MockPerson>>());
     }
 }

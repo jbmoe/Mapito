@@ -31,14 +31,14 @@ public class MapitoComponent : IMapitoComponent
     #region Mappers
 
     internal readonly Dictionary<Tuple<Type, Type>, ServiceDescriptor> Mappers = new();
-    public IMapitoComponent SetMapper<TSource, TDest, TMapper>()
+    public IMapitoComponent SetMapper<TSource, TDest, TMapper>(ServiceLifetime lifetime)
         where TSource : class
         where TDest : class
         where TMapper : IMapper<TSource, TDest>
     {
         var mapperTypes = new Tuple<Type, Type>(typeof(TSource), typeof(TDest));
 
-        var serviceDescriptor = ServiceDescriptor.Describe(typeof(IMapper<TSource, TDest>), typeof(TMapper), ServiceLifetime.Transient);
+        var serviceDescriptor = ServiceDescriptor.Describe(typeof(IMapper<TSource, TDest>), typeof(TMapper), lifetime);
 
         Mappers.TryAdd(mapperTypes, serviceDescriptor);
 
