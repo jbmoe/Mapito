@@ -29,7 +29,7 @@ PM> NuGet\Install-Package Mapito -Version 1.2.0-alpha
 #### PackageReference
 
 ```
-<PackageReference Include="Mapito" Version="1.1.0-alpha" />
+<PackageReference Include="Mapito" Version="1.2.0-alpha" />
 ```
 ## Getting Started
 
